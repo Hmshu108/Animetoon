@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <title>Anime</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+   
+
+      .hero {
+        height: 75vh; 
+        background: url("https://animemangatoon.com/wp-content/uploads/2024/06/pjimage-12-4-e1720973001888-1140x570.jpg")
+          no-repeat center center/cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+      }
+
+   
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); 
+        z-index: 1;
+      }
+
+  
+      .hero-content {
+        z-index: 2;
+        color: #fff;
+        font-size: 2.5rem;
+        animation: fadeInText 3s ease-in-out infinite;
+      }
+
+     
+      @media (max-width: 768px) {
+        .hero-content {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-content {
+          font-size: 1.5rem;
+        }
+      }
+
+      
+      @keyframes fadeInText {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+      }
+
+      .character-section {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 50px;
+      }
+
+    
+      .character-card {
+        width: 250px;
+        height: 350px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .character-card:hover {
+        transform: translateY(-5px); 
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+      }
+
+      .character-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .character-details {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .character-card:hover .character-details {
+        opacity: 1;
+      }
+
+      .character-details h3 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+        color: #ff4d4d;
+      }
+
+      .character-details p {
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .cta-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px; 
+      }
+
+      .cta-button {
+        background-color: #ff4757; 
+        color: white; 
+        padding: 15px 30px; 
+        text-align: center;
+        text-decoration: none; 
+        border-radius: 5px; 
+        font-size: 18px; 
+        transition: background-color 0.3s ease, transform 0.3s ease; 
+        margin-bottom: 10vh;
+      }
+
+      .cta-button:hover {
+        background-color: #e84118;
+        text-decoration: none; 
+        color: black;
+        transform: translateY(-3px); 
+      }
+
+      .cta-button:active {
+        transform: translateY(1px); 
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">AnimeMangatoon</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Genre
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Comedy</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Drama</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Find Your Anime"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </nav>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Welcome to the World of <span style="color: red">Anime</span></h1>
+        <p>"Unleash the Hero Within"</p>
+      </div>
+    </section>
+
+    <section class="character-section">
+      <!-- Character 1 -->
+      <div class="character-card">
+        <img
+          src="https://img.freepik.com/free-photo/anime-style-portrait-traditional-japanese-samurai-character_23-2151499110.jpg?size=626&ext=jpg&ga=GA1.1.295958284.1728390171&semt=ais_hybrid"
+          alt="Ryu Kaze"
+        />
+        <div class="character-details">
+          <h3>Ryu Kaze</h3>
+          <p>
+            The brave warrior who fights for justice and protects the innocent.
+          </p>
+        </div>
+      </div>
+
+      <!-- Character 2 -->
+      <div class="character-card">
+        <img
+          src="https://img.freepik.com/free-photo/halloween-scene-illustration-anime-style_23-2151794305.jpg?size=626&ext=jpg&ga=GA1.1.295958284.1728390171&semt=ais_hybrid"
+          alt="Lyra Nox"
+        />
+        <div class="character-details">
+          <h3>Lyra Nox</h3>
+          <p>
+            A mysterious mage with a dark past, wielding incredible magic
+            powers.
+          </p>
+        </div>
+      </div>
+
+      <!-- Character 3 -->
+      <div class="character-card">
+        <img
+          src="https://img.freepik.com/free-photo/full-shot-ninja-wearing-equipment_23-2150960991.jpg?size=626&ext=jpg&ga=GA1.1.295958284.1728390171&semt=ais_hybrid"
+          alt="Zara Frost"
+        />
+        <div class="character-details">
+          <h3>Zara Frost</h3>
+          <p>
+            The agile and cunning assassin who strikes fear in the hearts of
+            enemies.
+          </p>
+        </div>
+      </div>
+
+      <!-- Character 4 -->
+      <div class="character-card">
+        <img
+          src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/08/Collage-Maker-18-Aug-2022-1112-AM.jpg?q=50&fit=crop&w=825&dpr=1.5"
+          alt="Kai Rei"
+        />
+        <div class="character-details">
+          <h3>Kai Rei</h3>
+          <p>
+            The wise strategist who leads the team with unmatched intelligence.
+          </p>
+        </div>
+      </div>
+
+      <!-- Character 5 -->
+      <div class="character-card">
+        <img
+          src="https://img.freepik.com/free-photo/front-view-ninja-wearing-equipment_23-2150961032.jpg?size=626&ext=jpg&ga=GA1.1.295958284.1728390171&semt=ais_hybrid"
+          alt="Akira Yume"
+        />
+        <div class="character-details">
+          <h3>Akira Yume</h3>
+          <p>
+            A fearless dragon slayer with a heart of gold, ready to face any
+            challenge.
+          </p>
+        </div>
+      </div>
+
+      <!-- Character 6 -->
+      <div class="character-card">
+        <img
+          src="https://img.freepik.com/premium-photo/anime-image-woman-with-long-red-hair-sword_1034470-114997.jpg?size=626&ext=jpg&ga=GA1.1.295958284.1728390171&semt=ais_hybrid"
+          alt="Jin Hoshino"
+        />
+        <div class="character-details">
+          <h3>Jin Hoshino</h3>
+          <p>
+            The charming rogue who uses wit and charm to navigate tricky
+            situations.
+          </p>
+        </div>
+      </div>
+
+      <!-- Character 7 -->
+      <div class="character-card">
+        <img
+          src="https://staticg.sportskeeda.com/editor/2024/08/7fd79-17230159306790-1920.jpg?w=1600"
+          alt="Mira Kirin"
+        />
+        <div class="character-details">
+          <h3>Mira Kirin</h3>
+          <p>
+            A skilled healer with the ability to mend both wounds and hearts.
+          </p>
+        </div>
+      </div>
+
+      <!-- Character 8 -->
+      <div class="character-card">
+        <img
+          src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/10/Child-Prodigies-edward-elric-8.jpg?q=50&fit=crop&w=825&dpr=1.5"
+          alt="Leo Shiro"
+        />
+        <div class="character-details">
+          <h3>Leo Shiro</h3>
+          <p>
+            The young prodigy with a bright future, mastering the art of combat.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-container">
+      <a href="#" class="cta-button">Read More from AnimeMangatoon</a>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
